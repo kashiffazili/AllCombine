@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C Programs</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#081321;color:#fff}
+body{min-height:100vh;padding:18px 0}
+.page{width:100%;min-height:100vh;padding:0 16px}
+.watermark{text-align:center;font-weight:700;font-size:14px;margin:4px 0 14px;opacity:.92}
+.container{width:100%;max-width:540px;margin:auto}
+.card{
+ background:rgba(255,255,255,.08);
+ border:1px solid rgba(255,255,255,.16);
+ border-radius:18px;padding:20px;
+ box-shadow:0 12px 35px rgba(0,0,0,.3)
+}
+h1{margin:0 0 18px;text-align:center;font-size:25px}
+label{display:block;margin:12px 0 6px;font-weight:700}
+select,input,button{
+ width:100%;padding:13px;border-radius:10px;font-size:16px;
+ margin:3px 0;border:1px solid #607080
+}
+select,input{background:#fff;color:#111}
+button{background:#1683ff;color:#fff;border:0;font-weight:700;cursor:pointer;margin-top:14px}
+button:active{transform:scale(.99)}
+.output{margin-top:16px;padding:14px;min-height:70px;background:#050a10;border-radius:10px;white-space:pre-wrap;font:14px/1.55 Consolas,"Courier New",monospace;overflow:auto}
+.source{margin-top:16px}
+details summary{cursor:pointer;font-weight:700}
+pre{white-space:pre-wrap;overflow:auto;font:12px/1.5 Consolas,"Courier New",monospace}
+.hint{font-size:12px;opacity:.75;margin-top:10px;text-align:center}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="watermark">Created by Mohammad Kashif Fazili</div>
+<div class="container">
+<div class="card">
+<h1>C Programs</h1>
+
+<label for="program">Select Program</label>
+<select id="program"></select>
+
+<div id="fields"></div>
+<button id="run">Run Program</button>
+
+<div class="output" id="output">Output will appear here.</div>
+
+<div class="source">
+<details>
+<summary>View C Source Code</summary>
+<pre id="source"></pre>
+</details>
+</div>
+<div class="hint">Mobile-friendly • Ready for GitHub Pages</div>
+</div>
+</div>
+</div>
+
+<script>
+const SOURCES = {"Armstrong": "#include<stdio.h>\n#include<math.h>\n\nint main(){\n    int a,b,c;\n    printf(\"Enter your number \");\n    scanf(\"%d %d %d\", &a,&b,&c);\n\n    if(100*a+10*b+c == pow(a,3)+pow(b,3)+pow(c,3)){\n        printf(\"Your number is Armstrong\");\n    } else {\n        printf(\"Your number is not Armstrong\");\n    }\n\n    return 0;\n}\n", "Average": "#include<stdio.h>\n\nint main() {\n    float a;\n    printf(\"Enter first number: \");\n    scanf(\"%f\", &a);\n\n    float b;\n    printf(\"Enter second number: \");\n    scanf(\"%f\", &b);\n\n    float c;\n    printf(\"Enter third number: \");\n    scanf(\"%f\", &c);\n\n    printf(\"The Average is : %f\", (a+b+c)/3);\n    return 0;\n}\n", "Circle": "#include<stdio.h>\nint main() {\n    float radius;\n    \n    printf(\"Enter your radius \");\n    scanf(\"%f\", &radius);\n    \n    \n    printf(\"The area of circle is : %f\", 3.14*radius*radius);\n    return 0;\n}", "Combine": "#include<stdio.h>\n#include<math.h>\n \nint main() {\n    int choice;\n    printf(\"1. Area of Square \\n\");\n    printf(\"2. Area of Circle \\n\");\n    printf(\"3. Area of Rectangle \\n\");\n    printf(\"4. Find Average of 3 numbers \\n\");\n    printf(\"5. Find Cube of Number \\n\");\n    printf(\"6. Find Area of Segment \\n\");\n\n    printf(\"Enter your choice \");\n    scanf(\"%d\", &choice);\n    switch (choice){\n\n        case 1:\n        {\n            int side;\n            printf(\"Enter the Side lenght \");\n            scanf(\"%d\", &side);\n            printf(\"The Area of Square is : %d\", side*side);\n            break;\n        }\n\n        case 2:\n        {\n          float radius;\n            printf(\"Enter the Radius \");\n            scanf(\"%f\", &radius);\n            printf(\"The Area of Circle is : %f\", 3.14*radius*radius);\n            break; \n        } \n        \n        case 3:\n        {\n           int length,breadth;\n            printf(\"Enter the Lenght \");\n            scanf(\"%d\", &length);\n\n            printf(\"Enter the Breadth \");\n            scanf(\"%d\", &breadth);\n            printf(\"The Area of Rectangle is : %d\", length*breadth);\n            break;    \n        }\n\n        case 4:\n        {\n            float a,b,c;\n            printf(\"Enter first number \");\n            scanf(\"%f\", &a);\n\n            printf(\"Enter second number \");\n            scanf(\"%f\", &b);\n\n            printf(\"Enter third number \");\n            scanf(\"%f\", &c);\n\n            printf(\"The Average is %f\", (a+b+c)/3);\n            break;\n        }\n\n        case 5:\n        {\n            int a;\n            printf(\"Enter your Number \");\n            scanf(\"%d\", &a);\n            printf(\"The cube of number is %f\", pow(a,3));\n            break;\n        }\n\n        case 6:\n        {\n            float radius,angle;\n            printf(\"Enter Radius \");\n            scanf(\"%f\", &radius);\n\n            printf(\"Enter angle in degrees \");\n            scanf(\"%f\", &angle);\n\n            float area = ((angle/360)*3.14-sin((angle/2)*3.14/180)*cos((angle/2)*3.14/180))*radius*radius;\n            printf(\"THe area of segment is %f square units\", area);\n            break;\n        }\n        \n        default:\n            printf(\"Invalid choice\");\n    }\n    return 0;\n    \n }", "New Number Series": "#include<stdio.h>\n\nint main(){\n    int a,b;\n    printf(\"Enter first number \");\n    scanf(\"%d\", &a);\n\n    printf(\"Enter terminate number \");\n    scanf(\"%d\", &b);\n\n    // int i=a;\n    // while(i<=b){\n    //     printf(\"%d \\n\", i);\n    //     i++;\n    // }\n    \n    int i;\n    if(a<b){\n        for(i=a;i<=b;i++){\n        printf(\"%d \\n\", i);\n    }\n    }\n    else if(a>b){\n        for(i=a;i>=b;i--){\n            printf(\"%d \\n\", i);\n        }\n    }\n     else{\n        printf(\"Wrong input \");\n     }\n    \n    return 0;\n}", "Number Power": "#include<stdio.h>\n#include<math.h>\nint main() {\n    int number,power;\n    printf(\"Enter your number \");\n    scanf(\"%d\", &number);\n\n    printf(\"Enter power to raise \");\n    scanf(\"%d\", &power);\n    printf(\"Your answer is : %f\", pow (number,power));\n    return 0;\n}", "Rectangle": "#include<stdio.h>\nint main() {\n    int length,breadth;\n    printf(\"Enter Lenght \");\n    scanf(\"%d\", &length);\n\n    printf(\"Enter breadth \");\n    scanf(\"%d\", &breadth);\n\n    printf(\"The Perimeter of rectangle is : %d\", 2*length*breadth);\n    return 0;\n}", "Square": "#include<stdio.h>\nint main()\n{\n    int side;\n    printf(\"Enter Side \");\n    scanf(\"%d\", &side);\n    int area = side*side;\n    printf(\"Area is %d\", area);\n    return 0;\n}"};
+const programEl = document.getElementById("program");
+const fieldsEl = document.getElementById("fields");
+const outputEl = document.getElementById("output");
+const sourceEl = document.getElementById("source");
+
+const allPrograms = Object.keys(SOURCES);
+allPrograms.forEach(name => {
+  const o = document.createElement("option");
+  o.value = name;
+  o.textContent = name;
+  programEl.appendChild(o);
+});
+
+function addField(id, label, type="number") {
+  const wrapper = document.createElement("div");
+  const lab = document.createElement("label");
+  lab.htmlFor = id;
+  lab.textContent = label;
+  const input = document.createElement("input");
+  input.id = id;
+  input.type = type;
+  input.step = "any";
+  input.inputMode = "decimal";
+  wrapper.appendChild(lab);
+  wrapper.appendChild(input);
+  fieldsEl.appendChild(wrapper);
+}
+
+function num(id) {
+  const el = document.getElementById(id);
+  return el ? Number(el.value) : NaN;
+}
+
+function hasBlank(ids) {
+  return ids.some(id => {
+    const el = document.getElementById(id);
+    return !el || el.value.trim() === "";
+  });
+}
+
+function setupProgram() {
+  const name = programEl.value;
+  fieldsEl.innerHTML = "";
+  sourceEl.textContent = SOURCES[name];
+  outputEl.textContent = "Output will appear here.";
+
+  if (name === "Armstrong") {
+    addField("a", "First digit (a)");
+    addField("b", "Second digit (b)");
+    addField("c", "Third digit (c)");
+  } else if (name === "Average") {
+    addField("a", "First number");
+    addField("b", "Second number");
+    addField("c", "Third number");
+  } else if (name === "Circle") {
+    addField("radius", "Radius");
+  } else if (name === "Combine") {
+    addField("choice", "Enter your choice (1-6)");
+    const note = document.createElement("div");
+    note.className = "hint";
+    note.id = "choiceHint";
+    note.textContent = "1 Square • 2 Circle • 3 Rectangle • 4 Average • 5 Cube • 6 Segment";
+    fieldsEl.appendChild(note);
+
+    const choice = document.getElementById("choice");
+    choice.addEventListener("input", setupCombineFields);
+  } else if (name === "New Number Series") {
+    addField("a", "Enter first number");
+    addField("b", "Enter terminate number");
+  } else if (name === "Number Power") {
+    addField("number", "Enter your number");
+    addField("power", "Enter power to raise");
+  } else if (name === "Number Series") {
+    // No input, exactly as Numberseries.c: for i=0..10 print i.
+    const p = document.createElement("div");
+    p.className = "hint";
+    p.textContent = "No input required. Press Run.";
+    fieldsEl.appendChild(p);
+  } else if (name === "Pass / Fail") {
+    addField("number", "Enter your marks (0-100)");
+  } else if (name === "Rectangle") {
+    addField("length", "Enter Length");
+    addField("breadth", "Enter breadth");
+  } else if (name === "Square") {
+    addField("side", "Enter Side");
+  }
+}
+
+function setupCombineFields() {
+  // Preserve choice and dynamically reproduce combine.c's switch menu.
+  const choiceValue = document.getElementById("choice")?.value || "";
+  fieldsEl.innerHTML = "";
+  addField("choice", "Enter your choice (1-6)");
+  document.getElementById("choice").value = choiceValue;
+
+  const hint = document.createElement("div");
+  hint.className = "hint";
+  hint.textContent = "1 Square • 2 Circle • 3 Rectangle • 4 Average • 5 Cube • 6 Segment";
+  fieldsEl.appendChild(hint);
+
+  const choice = document.getElementById("choice");
+  choice.addEventListener("input", setupCombineFields);
+
+  const c = Number(choiceValue);
+  if (c === 1) {
+    addField("side", "Enter the Side");
+  } else if (c === 2) {
+    addField("radius", "Enter the Radius");
+  } else if (c === 3) {
+    addField("length", "Enter the Length");
+    addField("breadth", "Enter the Breadth");
+  } else if (c === 4) {
+    addField("a", "Enter first number");
+    addField("b", "Enter second number");
+    addField("c", "Enter third number");
+  } else if (c === 5) {
+    addField("a", "Enter your Number");
+  } else if (c === 6) {
+    addField("radius", "Enter Radius");
+    addField("angle", "Enter angle in degrees");
+  }
+}
+
+function runCombine() {
+  const choice = num("choice");
+
+  if (!Number.isFinite(choice)) return "Enter a choice from 1 to 6.";
+
+  switch (choice) {
+    case 1: {
+      if (hasBlank(["side"])) return "Enter the side.";
+      const side = num("side");
+      return "The Area of Square is : " + (side * side);
+    }
+    case 2: {
+      if (hasBlank(["radius"])) return "Enter the radius.";
+      const radius = num("radius");
+      return "The Area of Circle is : " + (3.14 * radius * radius);
+    }
+    case 3: {
+      if (hasBlank(["length","breadth"])) return "Enter length and breadth.";
+      const length = num("length");
+      const breadth = num("breadth");
+      return "The Area of Rectangle is : " + (length * breadth);
+    }
+    case 4: {
+      if (hasBlank(["a","b","c"])) return "Enter all three numbers.";
+      const a = num("a"), b = num("b"), c = num("c");
+      return "The Average is " + ((a+b+c)/3);
+    }
+    case 5: {
+      if (hasBlank(["a"])) return "Enter the number.";
+      const a = num("a");
+      return "The cube of number is " + Math.pow(a,3);
+    }
+    case 6: {
+      if (hasBlank(["radius","angle"])) return "Enter radius and angle.";
+      const radius = num("radius");
+      const angle = num("angle");
+      const rad = Math.PI / 180;
+      const area = ((angle/360)*3.14 - Math.sin((angle/2)*rad)*Math.cos((angle/2)*rad))*radius*radius;
+      return "THe area of segment is " + area + " square units";
+    }
+    default:
+      return "Invalid choice";
+  }
+}
+
+function runProgram() {
+  const name = programEl.value;
+  let result = "";
+
+  if (name === "Armstrong") {
+    if (hasBlank(["a","b","c"])) return outputEl.textContent = "Enter all three digits.";
+    const a=num("a"), b=num("b"), c=num("c");
+    result = (100*a+10*b+c === Math.pow(a,3)+Math.pow(b,3)+Math.pow(c,3))
+      ? "Your number is Armstrong"
+      : "Your number is not Armstrong";
+
+  } else if (name === "Average") {
+    if (hasBlank(["a","b","c"])) return outputEl.textContent = "Enter all three numbers.";
+    result = "The Average is : " + ((num("a")+num("b")+num("c"))/3);
+
+  } else if (name === "Circle") {
+    if (hasBlank(["radius"])) return outputEl.textContent = "Enter the radius.";
+    const r=num("radius");
+    result = "The area of circle is : " + (3.14*r*r);
+
+  } else if (name === "Combine") {
+    result = runCombine();
+
+  } else if (name === "New Number Series") {
+    if (hasBlank(["a","b"])) return outputEl.textContent = "Enter both numbers.";
+    const a=num("a"), b=num("b");
+    if (a < b) {
+      for (let i=a;i<=b;i++) result += i + "\n";
+    } else if (a > b) {
+      for (let i=a;i>=b;i--) result += i + "\n";
+    } else {
+      result = "Wrong input ";
+    }
+
+  } else if (name === "Number Power") {
+    if (hasBlank(["number","power"])) return outputEl.textContent = "Enter number and power.";
+    result = "Your answer is : " + Math.pow(num("number"), num("power"));
+
+  } else if (name === "Number Series") {
+    for (let i=0;i<=10;i++) result += i + "\n";
+
+  } else if (name === "Pass / Fail") {
+    if (hasBlank(["number"])) return outputEl.textContent = "Enter your marks.";
+    const n=num("number");
+    if (n>=0 && n<30) result="You have got grade: C";
+    else if (n>=30 && n<70) result="You have got grade: B";
+    else if (n>=70 && n<90) result="You have got grade: A";
+    else if (n>=90 && n<=100) result="You have got grade: A+";
+    else result="You have entered wrong input";
+
+  } else if (name === "Rectangle") {
+    if (hasBlank(["length","breadth"])) return outputEl.textContent = "Enter length and breadth.";
+    const length=num("length"), breadth=num("breadth");
+    result = "The Perimeter of rectangle is : " + (2*length*breadth);
+
+  } else if (name === "Square") {
+    if (hasBlank(["side"])) return outputEl.textContent = "Enter the side.";
+    const side=num("side");
+    result = "Area is " + (side*side);
+  }
+
+  outputEl.textContent = result || "No output.";
+}
+
+programEl.addEventListener("change", setupProgram);
+document.getElementById("run").addEventListener("click", runProgram);
+
+setupProgram();
+</script>
+</body>
+</html>
